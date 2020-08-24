@@ -1,19 +1,7 @@
 import os,shutil
 from SCons.Script import DefaultEnvironment
 from platformio import util
-try:
-    # PIO < 4.4
-    from platformio.managers.package import PackageManager
-except ImportError:
-    # PIO >= 4.4
-    from platformio.package.meta import PackageSpec as PackageManager
-
-def parse_pkg_uri(spec):
-    if PackageManager.__name__ == 'PackageSpec':
-        return PackageManager(spec).name
-    else:
-        name, _, _ = PackageManager.parse_pkg_uri(spec)
-        return name
+from platformio.managers.package import PackageManager
 
 def copytree(src, dst, symlinks=False, ignore=None):
     for item in os.listdir(src):
@@ -38,7 +26,7 @@ framewords = {
 if len(platform_packages) == 0:
     platform_name = framewords[platform.__class__.__name__]
 else:
-    platform_name = parse_pkg_uri(platform_packages[0])
+    platform_name, _, _ = PackageManager.parse_pkg_uri(platform_packages[0])
 
 FRAMEWORK_DIR = platform.get_package_dir(platform_name)
 assert os.path.isdir(FRAMEWORK_DIR)

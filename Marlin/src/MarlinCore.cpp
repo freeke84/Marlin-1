@@ -57,7 +57,7 @@
 
 #include "lcd/ultralcd.h"
 #if HAS_TOUCH_XPT2046
-  #include "lcd/touch/touch_buttons.h"
+  #include "lcd/touch/xpt2046.h"
 #endif
 
 #if HAS_TFT_LVGL_UI

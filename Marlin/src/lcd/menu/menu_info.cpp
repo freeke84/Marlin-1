@@ -28,7 +28,7 @@
 
 #if BOTH(HAS_LCD_MENU, LCD_INFO_MENU)
 
-#include "menu_item.h"
+#include "menu.h"
 
 #if HAS_GAMES
   #include "game/game.h"

@@ -28,7 +28,7 @@
 
 #if HAS_LCD_MENU
 
-#include "menu_item.h"
+#include "menu.h"
 #include "../../module/temperature.h"
 #include "../../gcode/queue.h"
 #include "../../module/printcounter.h"
