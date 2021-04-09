@@ -26,8 +26,6 @@
  * Used by common-dependencies.py
  */
 
-#define NUM_SERIAL 1 // Normally provided by HAL/HAL.h
-
 #include "../../../../Marlin/src/inc/MarlinConfig.h"
 
 //
@@ -69,9 +67,6 @@
   #if ENABLED(CANCEL_OBJECTS)
     #define HAS_MENU_CANCELOBJECT
   #endif
-  #if ENABLED(CUSTOM_USER_MENUS)
-    #define HAS_MENU_CUSTOM
-  #endif
   #if EITHER(DELTA_CALIBRATION_MENU, DELTA_AUTO_CALIBRATION)
     #define HAS_MENU_DELTA_CALIBRATE
   #endif
@@ -110,6 +105,9 @@
   #endif
   #if ENABLED(TOUCH_SCREEN_CALIBRATION)
     #define HAS_MENU_TOUCH_SCREEN
+  #endif
+  #if ENABLED(ASSISTED_TRAMMING_WIZARD)
+    #define HAS_MENU_TRAMMING
   #endif
   #if ENABLED(AUTO_BED_LEVELING_UBL)
     #define HAS_MENU_UBL
