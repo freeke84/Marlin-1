@@ -21,16 +21,12 @@
 
 #include "ftdi_extended.h"
 
-#ifdef FTDI_EXTENDED
+#if ENABLED(FTDI_EXTENDED)
 
 /********************** VIRTUAL DISPATCH DATA TYPE  ******************************/
 
 uint8_t ScreenRef::lookupScreen(onRedraw_func_t onRedraw_ptr) {
-<<<<<<< HEAD
-  for(uint8_t type = 0; type < functionTableSize; type++) {
-=======
-  for (uint8_t type = 0; type < functionTableSize; type++) {
->>>>>>> bugfix-2.0.x
+  for (uint8_t type = 0; type < tableSize(); type++) {
     if (GET_METHOD(type, onRedraw) == onRedraw_ptr) {
       return type;
     }
@@ -47,21 +43,14 @@ void ScreenRef::setScreen(onRedraw_func_t onRedraw_ptr) {
   if (type != 0xFF) {
     setType(type);
     #if ENABLED(TOUCH_UI_DEBUG)
-      SERIAL_ECHO_START();
-      SERIAL_ECHOLNPAIR("New screen: ", type);
+      SERIAL_ECHO_MSG("New screen: ", type);
     #endif
   }
 }
 
 void ScreenRef::initializeAll() {
-<<<<<<< HEAD
-  for(uint8_t type = 0; type < functionTableSize; type++) {
+  for (uint8_t type = 0; type < tableSize(); type++)
     GET_METHOD(type, onStartup)();
-  }
-=======
-  for (uint8_t type = 0; type < functionTableSize; type++)
-    GET_METHOD(type, onStartup)();
->>>>>>> bugfix-2.0.x
 }
 
 /********************** SCREEN STACK  ******************************/
